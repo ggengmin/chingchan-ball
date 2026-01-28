@@ -14,21 +14,15 @@ export const shareToKakao = (praiseId, content) => {
     return;
   }
 
-  // 타임스탬프 추가로 캐시 우회!
-  const timestamp = Date.now();
-  const uniqueUrl = `https://chingchan-ball.vercel.app?t=${timestamp}`;
-
   window.Kakao.Share.sendDefault({
     objectType: 'feed',
     content: {
       title: '🎈 따뜻한 칭찬이 도착했어요!',
-      description: content,  // ← 실제 칭찬 내용!
-      imageUrl: 'https://em-content.zobj.net/source/apple/391/balloon_1f388.png',
-      imageWidth: 200,
-      imageHeight: 200,
+      description: content,
+      imageUrl: 'https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png',
       link: {
-        mobileWebUrl: uniqueUrl,  // ← 매번 다른 URL (캐시 우회)
-        webUrl: uniqueUrl,
+        mobileWebUrl: 'https://chingchan-ball.vercel.app',
+        webUrl: 'https://chingchan-ball.vercel.app',
       },
     },
     buttons: [
