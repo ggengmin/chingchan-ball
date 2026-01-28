@@ -17,6 +17,7 @@ export default function PraiseBall({ praise }) {
   const color = colors[Math.floor(Math.random() * colors.length)];
 
   const handleClick = () => {
+    // 드래그 중이 아닐 때만 모달 열기
     if (!isDragging) {
       setIsExpanded(true);
     }
@@ -26,43 +27,34 @@ export default function PraiseBall({ praise }) {
     shareToKakao(praise.id, praise.content);
   };
 
-  // 초기 위치 계산 (px 단위)
-  const initialX = (praise.positionX || Math.random() * 70) / 100 * window.innerWidth;
-  const initialY = (praise.positionY || Math.random() * 70) / 100 * window.innerHeight;
-
   return (
     <>
       <motion.div
         className="praise-ball"
         style={{
-          position: 'fixed',  // ← absolute에서 fixed로!
+          left: `${praise.positionX || Math.random() * 70}%`,
+          top: `${praise.positionY || Math.random() * 70}%`,
           background: color,
         }}
-        initial={{
-          x: initialX,
-          y: initialY,
-        }}
-        // 드래그 설정 - 화면 전체에서 움직임!
+        // 드래그 기능 추가
         drag
         dragConstraints={{
-          left: 0,
-          right: window.innerWidth - 120,
-          top: 0,
-          bottom: window.innerHeight - 120,
+          left: -window.innerWidth * 0.4,
+          right: window.innerWidth * 0.4,
+          top: -window.innerHeight * 0.4,
+          bottom: window.innerHeight * 0.4,
         }}
-        dragElastic={0.05}  // ← 약간의 탄성 (자연스러움)
-        dragTransition={{
-          power: 0.1,
-          timeConstant: 200,
-        }}
+        dragElastic={0.1}
+        dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
         onDragStart={() => setIsDragging(true)}
         onDragEnd={() => {
+          // 드래그 끝난 후 약간의 딜레이
           setTimeout(() => setIsDragging(false), 100);
         }}
         // 기존 애니메이션
         animate={{
-          y: [initialY, initialY - 15, initialY],
-          x: [initialX, initialX + 8, initialX - 8, initialX],
+          y: [0, -15, 0],
+          x: [0, 8, -8, 0],
         }}
         transition={{
           duration: 3 + Math.random() * 2,
