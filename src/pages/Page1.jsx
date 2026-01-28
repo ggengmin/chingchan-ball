@@ -7,6 +7,9 @@ export default function Page1() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // 인트로 봤다고 저장
+    localStorage.setItem('hasSeenIntro', 'true');
+    
     // 3초 후 자동으로 다음 페이지로
     const timer = setTimeout(() => {
       navigate('/balls');
