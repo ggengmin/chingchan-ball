@@ -1,0 +1,17 @@
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+
+// Firebase 설정 (Firebase Console에서 복사)
+// 🔥 TODO: 여기에 본인의 Firebase Config를 넣으세요!
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "YOUR_API_KEY",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "YOUR_AUTH_DOMAIN",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "YOUR_PROJECT_ID",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "YOUR_STORAGE_BUCKET",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "YOUR_SENDER_ID",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "YOUR_APP_ID"
+};
+
+// Firebase 초기화
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);

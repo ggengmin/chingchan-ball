@@ -1,0 +1,146 @@
+.praise-ball {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.ball-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  line-height: 1.4;
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;  /* 최대 3줄까지만 표시 */
+  -webkit-box-orient: vertical;
+}
+
+/* 확대 모달 */
+.ball-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.ball-modal-content {
+  background: white;
+  border-radius: 24px;
+  padding: 40px 30px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.ball-modal-ball {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.ball-emoji-large {
+  font-size: 60px;
+}
+
+.ball-modal-text {
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  line-height: 1.6;
+  color: #2D3748;
+  margin-bottom: 30px;
+  padding: 0 10px;
+  word-break: keep-all;
+}
+
+.ball-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.kakao-share-btn {
+  background: #FEE500;
+  color: #3C1E1E;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.kakao-share-btn:hover {
+  background: #FDD800;
+}
+
+.close-btn {
+  background: #E2E8F0;
+  color: #4A5568;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.close-btn:hover {
+  background: #CBD5E0;
+}
+
+.share-guide {
+  font-size: 12px;
+  color: #A0AEC0;
+  margin-top: 12px;
+}
+
+/* 모바일 최적화 */
+@media (max-width: 375px) {
+  .praise-ball {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .ball-emoji {
+    font-size: 28px;
+  }
+  
+  .ball-modal-content {
+    padding: 32px 24px;
+  }
+  
+  .ball-modal-ball {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .ball-emoji-large {
+    font-size: 50px;
+  }
+  
+  .ball-modal-text {
+    font-size: 16px;
+  }
+}

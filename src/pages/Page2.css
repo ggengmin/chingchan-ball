@@ -1,0 +1,78 @@
+.page2 {
+  width: 100%;
+  min-height: 100vh;
+  padding: 60px 20px 100px;
+  background: #FFF8EC;
+  position: relative;
+}
+
+.page2-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page2-header h2 {
+  font-size: 24px;
+  color: #4FD1C5;
+  margin-bottom: 10px;
+}
+
+.praise-count {
+  font-size: 14px;
+  color: #718096;
+}
+
+.balls-container {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  padding: 20px;
+}
+
+.loading-text,
+.empty-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #A0AEC0;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.add-praise-btn {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #4FD1C5;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(79, 209, 197, 0.4);
+  z-index: 100;
+}
+
+.add-praise-btn:hover {
+  background: #38B2AC;
+  box-shadow: 0 6px 16px rgba(79, 209, 197, 0.6);
+}
+
+/* 모바일 최적화 */
+@media (max-width: 375px) {
+  .page2 {
+    padding: 40px 16px 100px;
+  }
+  
+  .page2-header h2 {
+    font-size: 20px;
+  }
+  
+  .add-praise-btn {
+    padding: 14px 28px;
+    font-size: 14px;
+  }
+}

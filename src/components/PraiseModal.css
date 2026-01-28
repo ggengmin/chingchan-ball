@@ -1,0 +1,166 @@
+.praise-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.praise-modal-content {
+  background: white;
+  border-radius: 24px;
+  padding: 40px 30px;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  color: #A0AEC0;
+  font-size: 24px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  min-height: auto;
+}
+
+.modal-close:hover {
+  color: #4A5568;
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2D3748;
+  text-align: center;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.praise-input {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #E2E8F0;
+  border-radius: 12px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #2D3748;
+  resize: none;
+  margin-bottom: 8px;
+  font-family: inherit;
+}
+
+.praise-input:focus {
+  border-color: #4FD1C5;
+  outline: none;
+}
+
+.praise-input::placeholder {
+  color: #CBD5E0;
+}
+
+.char-count {
+  text-align: right;
+  font-size: 12px;
+  color: #A0AEC0;
+  margin-bottom: 20px;
+}
+
+.submit-btn {
+  width: 100%;
+  background: #4FD1C5;
+  color: white;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(79, 209, 197, 0.3);
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #38B2AC;
+  box-shadow: 0 6px 16px rgba(79, 209, 197, 0.5);
+}
+
+.submit-btn:disabled {
+  background: #CBD5E0;
+  cursor: not-allowed;
+}
+
+.modal-guide {
+  text-align: center;
+  font-size: 12px;
+  color: #A0AEC0;
+  margin-top: 12px;
+}
+
+/* 성공 메시지 */
+.success-message {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.success-emoji {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.success-message h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2D3748;
+  margin-bottom: 20px;
+}
+
+.success-message p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #4A5568;
+}
+
+/* 모바일 최적화 */
+@media (max-width: 375px) {
+  .praise-modal-content {
+    padding: 32px 24px;
+  }
+  
+  .modal-title {
+    font-size: 20px;
+  }
+  
+  .praise-input {
+    font-size: 15px;
+    padding: 14px;
+  }
+  
+  .submit-btn {
+    font-size: 16px;
+    padding: 14px;
+  }
+  
+  .success-emoji {
+    font-size: 50px;
+  }
+  
+  .success-message h3 {
+    font-size: 20px;
+  }
+  
+  .success-message p {
+    font-size: 15px;
+  }
+}
