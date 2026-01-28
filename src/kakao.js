@@ -18,7 +18,7 @@ export const shareToKakao = (praiseId, content) => {
   window.Kakao.Share.sendDefault({
     objectType: 'feed',
     content: {
-      title: '오늘의 칭찬 공 🎈',
+      title: '따뜻한 칭찬이 도착했어요!',
       description: content,
       imageUrl: 'https://via.placeholder.com/400x400/4FD1C5/ffffff?text=칭찬공', // 나중에 실제 이미지로 교체
       link: {
