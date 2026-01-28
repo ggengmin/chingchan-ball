@@ -6,9 +6,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  cursor: grab;  /* ← 변경 */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.2s ease;
+  user-select: none;  /* ← 추가: 텍스트 선택 방지 */
+}
+
+.praise-ball:active {
+  cursor: grabbing;  /* ← 추가: 드래그 중 커서 */
 }
 
 .ball-text {
@@ -25,6 +30,7 @@
   display: -webkit-box;
   -webkit-line-clamp: 3;  /* 최대 3줄까지만 표시 */
   -webkit-box-orient: vertical;
+  pointer-events: none;  /* ← 추가: 텍스트 클릭 방지 */
 }
 
 /* 확대 모달 */
@@ -92,6 +98,8 @@
   border-radius: 12px;
   font-weight: 600;
   font-size: 16px;
+  border: none;
+  cursor: pointer;
 }
 
 .kakao-share-btn:hover {
@@ -104,6 +112,8 @@
   padding: 14px 24px;
   border-radius: 12px;
   font-weight: 500;
+  border: none;
+  cursor: pointer;
 }
 
 .close-btn:hover {

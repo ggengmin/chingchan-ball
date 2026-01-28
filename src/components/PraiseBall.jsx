@@ -13,10 +13,14 @@ const colors = [
 
 export default function PraiseBall({ praise }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const color = colors[Math.floor(Math.random() * colors.length)];
 
   const handleClick = () => {
-    setIsExpanded(true);
+    // 드래그 중이 아닐 때만 모달 열기
+    if (!isDragging) {
+      setIsExpanded(true);
+    }
   };
 
   const handleShare = () => {
@@ -32,6 +36,22 @@ export default function PraiseBall({ praise }) {
           top: `${praise.positionY || Math.random() * 70}%`,
           background: color,
         }}
+        // 드래그 기능 추가
+        drag
+        dragConstraints={{
+          left: -window.innerWidth * 0.4,
+          right: window.innerWidth * 0.4,
+          top: -window.innerHeight * 0.4,
+          bottom: window.innerHeight * 0.4,
+        }}
+        dragElastic={0.1}
+        dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+        onDragStart={() => setIsDragging(true)}
+        onDragEnd={() => {
+          // 드래그 끝난 후 약간의 딜레이
+          setTimeout(() => setIsDragging(false), 100);
+        }}
+        // 기존 애니메이션
         animate={{
           y: [0, -15, 0],
           x: [0, 8, -8, 0],
