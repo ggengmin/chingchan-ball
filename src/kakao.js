@@ -7,32 +7,17 @@ export const initKakao = () => {
   }
 };
 
-// 카카오톡 공유하기
+// 카카오톡 공유하기 - 커스텀 템플릿
 export const shareToKakao = (praiseId, content) => {
   if (!window.Kakao) {
     alert('카카오톡 공유 기능을 사용할 수 없습니다.');
     return;
   }
 
-  window.Kakao.Share.sendDefault({
-    objectType: 'feed',
-    content: {
-      title: '🎈 따뜻한 칭찬이 도착했어요!',
-      description: content,
-      imageUrl: 'https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png',
-      link: {
-        mobileWebUrl: 'https://chingchan-ball.vercel.app',
-        webUrl: 'https://chingchan-ball.vercel.app',
-      },
+  window.Kakao.Share.sendCustom({
+    templateId: 128719,  // ← 여기에 복사한 템플릿 ID!
+    templateArgs: {
+         'description': content,
     },
-    buttons: [
-      {
-        title: '칭찬 보러가기',
-        link: {
-          mobileWebUrl: 'https://chingchan-ball.vercel.app',
-          webUrl: 'https://chingchan-ball.vercel.app',
-        },
-      },
-    ],
   });
 };
