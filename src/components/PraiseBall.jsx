@@ -36,19 +36,18 @@ export default function PraiseBall({ praise }) {
           top: `${praise.positionY || Math.random() * 70}%`,
           background: color,
         }}
-        // 드래그 기능 추가
+        // 드래그 기능 - 화면 안에 고정!
         drag
         dragConstraints={{
-          left: -window.innerWidth * 0.4,
-          right: window.innerWidth * 0.4,
-          top: -window.innerHeight * 0.4,
-          bottom: window.innerHeight * 0.4,
+          left: 0,
+          right: 0,
+          top: 0,
+          bottom: 0,
         }}
-        dragElastic={0.1}
-        dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+        dragElastic={0}  // ← 탄성 제거 (화면 밖 못 나감!)
+        dragMomentum={false}  // ← 관성 제거 (정확하게 멈춤)
         onDragStart={() => setIsDragging(true)}
         onDragEnd={() => {
-          // 드래그 끝난 후 약간의 딜레이
           setTimeout(() => setIsDragging(false), 100);
         }}
         // 기존 애니메이션
