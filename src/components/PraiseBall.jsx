@@ -17,7 +17,6 @@ export default function PraiseBall({ praise }) {
   const color = colors[Math.floor(Math.random() * colors.length)];
 
   const handleClick = () => {
-    // 드래그 중이 아닐 때만 모달 열기
     if (!isDragging) {
       setIsExpanded(true);
     }
@@ -27,33 +26,43 @@ export default function PraiseBall({ praise }) {
     shareToKakao(praise.id, praise.content);
   };
 
+  // 초기 위치 계산 (px 단위)
+  const initialX = (praise.positionX || Math.random() * 70) / 100 * window.innerWidth;
+  const initialY = (praise.positionY || Math.random() * 70) / 100 * window.innerHeight;
+
   return (
     <>
       <motion.div
         className="praise-ball"
         style={{
-          left: `${praise.positionX || Math.random() * 70}%`,
-          top: `${praise.positionY || Math.random() * 70}%`,
+          position: 'fixed',  // ← absolute에서 fixed로!
           background: color,
         }}
-        // 드래그 기능 - 화면 안에 고정!
+        initial={{
+          x: initialX,
+          y: initialY,
+        }}
+        // 드래그 설정 - 화면 전체에서 움직임!
         drag
         dragConstraints={{
           left: 0,
-          right: 0,
+          right: window.innerWidth - 120,
           top: 0,
-          bottom: 0,
+          bottom: window.innerHeight - 120,
         }}
-        dragElastic={0}  // ← 탄성 제거 (화면 밖 못 나감!)
-        dragMomentum={false}  // ← 관성 제거 (정확하게 멈춤)
+        dragElastic={0.05}  // ← 약간의 탄성 (자연스러움)
+        dragTransition={{
+          power: 0.1,
+          timeConstant: 200,
+        }}
         onDragStart={() => setIsDragging(true)}
         onDragEnd={() => {
           setTimeout(() => setIsDragging(false), 100);
         }}
         // 기존 애니메이션
         animate={{
-          y: [0, -15, 0],
-          x: [0, 8, -8, 0],
+          y: [initialY, initialY - 15, initialY],
+          x: [initialX, initialX + 8, initialX - 8, initialX],
         }}
         transition={{
           duration: 3 + Math.random() * 2,
